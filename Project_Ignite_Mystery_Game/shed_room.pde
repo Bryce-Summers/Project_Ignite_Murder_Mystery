@@ -13,6 +13,7 @@ class shed_room extends Room {
   
   void setup() {
     timer=0;
+    
   }
 
   void draw() {
