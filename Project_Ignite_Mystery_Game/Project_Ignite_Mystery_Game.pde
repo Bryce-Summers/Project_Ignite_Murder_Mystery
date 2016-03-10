@@ -19,7 +19,7 @@ Room current_room;
 
 void setup() {
   
-  fullScreen();
+  size(1200,800);
   
   entrance_room = new entrance_room();
   entrance_room.setup();
