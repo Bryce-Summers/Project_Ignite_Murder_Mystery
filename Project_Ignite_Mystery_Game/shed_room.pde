@@ -18,4 +18,3 @@ class shed_room extends Room {
   void draw() {
     currentRoom.draw();
   }
-}

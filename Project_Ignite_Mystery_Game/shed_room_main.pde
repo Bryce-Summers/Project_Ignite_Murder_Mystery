@@ -2,7 +2,7 @@ class shed_room_main extends Room {
   //please put variables here
   int timer;
 
-  private boolean holdingWand=true;
+  private boolean holdingWand=false;
   private int wandRange=100;
   private MusicPlayer musicPlayer=new MusicPlayer();
 
@@ -12,6 +12,9 @@ class shed_room_main extends Room {
   }
 
   void draw() {
+    if (mousePressed) {
+      this.mouseClicked();
+    }
     musicPlayer.play();
     noFill();
     timer++;
@@ -33,14 +36,12 @@ class shed_room_main extends Room {
         for (int y=0; y<height; y++) {
           if (getDistance(x, y, mouseX, mouseY)>wandRange) {
             int index=x+y*width;
-            //set(x,y,color(255));
-            pixels[index]=color(255);
           }
         }
       }
-      updatePixels();
     }
   }
+
 
   void drawConcealedLines() {
     for (int[][] object_lines : shed_room_objects.room_lines) {
