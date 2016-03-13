@@ -5,16 +5,25 @@
 //last modified 14 February 2016
 
 class shed_room extends Room {
-  Room currentRoom;
+  Room currentSubRoom=new shed_room_main();
 
   Room mainRoom=new shed_room_main();
   public shed_room() {
-    currentRoom=mainRoom;
+    currentSubRoom=mainRoom;
   }
 
   void setup() {
   };
 
   void draw() {
-    currentRoom.draw();
+    currentSubRoom.draw();
   }
+
+  void mouseClicked() {
+    currentSubRoom.mouseClicked();
+  }
+
+  public void setCurrentSubRoom(Room subRoom) {
+    this.currentSubRoom=subRoom;
+  }
+}

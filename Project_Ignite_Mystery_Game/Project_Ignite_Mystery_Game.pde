@@ -18,9 +18,9 @@ Player player;
 Room current_room;
 
 void setup() {
-  
-  size(1200,800);
-  
+
+  size(1200, 800);
+
   entrance_room = new entrance_room();
   entrance_room.setup();
   living_room = new living_room();
@@ -31,24 +31,30 @@ void setup() {
   dining_room.setup();
   study_room = new study_room();
   study_room.setup();
+  print("here1");
   shed_room = new shed_room();
   shed_room.setup();
+  print("here2");
   bed_room = new bed_room();
   bed_room.setup();
-  
+
   intro_room=new intro_room();
   intro_room.setup();
   outro_room=new outro_room();
   outro_room.setup();
-  
+
   current_room=intro_room;
-  
+
   player = new Player();
 }
 
 void draw() {
   //current_room.draw();
   shed_room.draw();
+}
+
+void mouseClicked() {
+  shed_room.mouseClicked();
 }
 /*murder weapon - knife - creepo
  advisor dialogue - “will” - advisor
@@ -64,7 +70,7 @@ void draw() {
  butler dialogue - “I’ve never seen the sig other cry before” - sig other 
  chef dialogue - “I’m always underpaid”
  sig other - “i’m sad” like #waytoosad - themself*/
- 
+
 //data structure for holding clues
 class Player {
   boolean advisor;
@@ -80,8 +86,8 @@ class Player {
   boolean butler;
   boolean chef;
   boolean sigOther;
-  
-  Player(){
+
+  Player() {
     advisor=false;
     shirt=false;
     handprint=false;
@@ -101,24 +107,26 @@ class Player {
 abstract class Room {
   abstract void setup();
   abstract void draw();
-
-  //@todo implement me, lovely UI programmers. Sincerely, me.
-  void displayDialogue(){
+  void mouseClicked() {
   }
 
-  
+  //@todo implement me, lovely UI programmers. Sincerely, me.
+  void displayDialogue() {
+  }
+
+
   void goToRoom(Room room) {
     current_room=room;
   }
 }
 
-void reset(){
+void reset() {
   setup();
 }
 
 //Not implemented yet. Maybe later.
-void saveGame(){
+void saveGame() {
 }
 
-void loadGame(){
+void loadGame() {
 }
