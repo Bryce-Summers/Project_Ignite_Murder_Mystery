@@ -31,10 +31,8 @@ void setup() {
   dining_room.setup();
   study_room = new study_room();
   study_room.setup();
-  print("here1");
   shed_room = new shed_room();
   shed_room.setup();
-  print("here2");
   bed_room = new bed_room();
   bed_room.setup();
 

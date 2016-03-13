@@ -8,16 +8,16 @@ static class shed_room_objects {
   public static final int LINE=0;
   public static final int CIRCLE=1;
  
-  public class ImageObject{
-    private int visibilityStatus;
-    private int dataType;
-    private int[][] vertices;
-    public ImageObject(int[][] data){
-      this.visibilityStatus=data[0][0];
-      this.dataType=data[0][1];
-      
-    }
-  }
+  //public class ImageObject{
+  //  private int visibilityStatus;
+  //  private int dataType;
+  //  private int[][] vertices;
+  //  public ImageObject(int[][] data){
+  //    this.visibilityStatus=data[0][0];
+  //    this.dataType=data[0][1];
+  //    copyOver(
+  //  }
+  //}
   
   static int[][] roomEdges=new int[][]{
     new int[]{SHOWING, LINE, 0, 0}, 
