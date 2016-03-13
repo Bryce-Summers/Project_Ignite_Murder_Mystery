@@ -8,5 +8,6 @@ class kitchen_room extends Room{
   }
   
   void draw(){
+    background(0);
   }
 }

@@ -108,7 +108,7 @@ class shed_room_main extends Room {
     println("click registered");
     if (checkLineObjectClicked(shed_room_objects.exit_arrow)) {
       println("\texit arrow clicked");
-      //goToRoom()      //where does the shed lead to?
+      goToRoom(kitchen_room);      //where does the shed lead to?
     } else if (checkCircleObjectClicked(shed_room_objects.face_circles)) {
       println("\t\tface clicked");
       int dist=(int)(Math.random()*100);
@@ -140,7 +140,7 @@ class shed_room_main extends Room {
     }
   }
 
-  void set(int[][] input, int[][] output) {
+  public void set(int[][] input, int[][] output) {
     for (int i=0; i<output.length; i++) {
       for (int j=0; j<output[i].length; j++) {
         output[i][j]=
@@ -160,7 +160,7 @@ class shed_room_main extends Room {
     loadPixels();
     for (int x=minX; x<mouseX; x++) {
       int index=mouseY*width+x;
-      if (pixels[index]<255) {
+      if (pixels[index]==color(0)) {
         counter++;
       }
     }

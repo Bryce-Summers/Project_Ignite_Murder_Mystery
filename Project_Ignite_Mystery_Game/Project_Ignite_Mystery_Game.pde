@@ -43,14 +43,15 @@ void setup() {
   outro_room=new outro_room();
   outro_room.setup();
 
-  current_room=intro_room;
+  //current_room=intro_room;
+  current_room=shed_room;
 
   player = new Player();
 }
 
 void draw() {
-  //current_room.draw();
-  shed_room.draw();
+  current_room.draw();
+  //shed_room.draw();
 }
 
 void mouseClicked() {
@@ -73,19 +74,19 @@ void mouseClicked() {
 
 //data structure for holding clues
 class Player {
-  boolean advisor;
-  boolean shirt;
-  boolean handprint;
-  boolean letter;
-  boolean apron;
-  boolean maid;
-  boolean passage;
-  boolean computer;
-  boolean creepo;
-  boolean vegiSack;
-  boolean butler;
-  boolean chef;
-  boolean sigOther;
+  private boolean advisor;
+  private boolean shirt;
+  private boolean handprint;
+  private boolean letter;
+  private boolean apron;
+  private boolean maid;
+  private boolean passage;
+  private boolean computer;
+  private boolean creepo;
+  private boolean vegiSack;
+  private boolean butler;
+  private boolean chef;
+  private boolean sigOther;
 
   Player() {
     advisor=false;
@@ -101,6 +102,102 @@ class Player {
     butler=false;
     chef=false;
     sigOther=false;
+  }
+
+  void setAdvisor(boolean b) {
+    this.advisor=b;
+  }
+
+  boolean getAdvisor() {
+    return this.advisor;
+  }
+
+  void setShirt(boolean b) {
+    this.shirt=b;
+  }
+
+  boolean getShirt() {
+    return this.shirt;
+  }
+
+  void setHandprint(boolean b) {
+    this.handprint=b;
+  }
+
+  boolean getHandprint() {
+    return this.handprint;
+  }
+
+  void setLetter(boolean b) {
+    this.letter=b;
+  }
+
+  boolean getLetter() {
+    return this.letter;
+  }
+
+  void setApron(boolean b) {
+    this.apron=b;
+  }
+
+  boolean getApron() {
+    return this.apron;
+  }
+
+  void setMaid(boolean b) {    
+    this.maid=b;
+  }
+
+  boolean getMaid() {
+    return this.maid;
+  }
+
+  void setPassage(boolean b) {
+    this.passage=b;
+  }
+
+  boolean getPassage() {
+    return this.passage;
+  }
+
+  void setComputer(boolean b) {
+    this.computer=b;
+  }
+
+  boolean getComputer() {
+    return this.computer;
+  }
+
+  void setCreepo(boolean b) {
+    this.creepo=b;
+  }
+
+  boolean getCreepo() {
+    return this.creepo;
+  }
+
+  void setVegiSack(boolean b) {
+    this.vegiSack=b;
+  }
+
+  boolean getVegiSack() {
+    return this.vegiSack;
+  }
+
+  void setButler(boolean b) {
+    this.chef=b;
+  }
+
+  boolean getButler() {
+    return this.butler;
+  }
+
+  void setSigOther(boolean b) {
+    this.sigOther=b;
+  }
+
+  boolean getSigOther() {
+    return this.sigOther;
   }
 }
 

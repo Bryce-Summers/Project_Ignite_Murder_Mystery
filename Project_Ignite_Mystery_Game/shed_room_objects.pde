@@ -4,8 +4,23 @@ static class shed_room_objects {
   public static final int HIDDEN=0;
   public static final int SHOWING=1;
   public static final int CONCEALED=2;
+  
+  public static final int LINE=0;
+  public static final int CIRCLE=1;
+ 
+  public class ImageObject{
+    private int visibilityStatus;
+    private int dataType;
+    private int[][] vertices;
+    public ImageObject(int[][] data){
+      this.visibilityStatus=data[0][0];
+      this.dataType=data[0][1];
+      
+    }
+  }
+  
   static int[][] roomEdges=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{2, 798, 232, 498}, 
     new int[]{232, 498, 232, 498}, 
     new int[]{233, 498, 902, 500}, 
@@ -18,14 +33,14 @@ static class shed_room_objects {
   };
 
   static int[][] magicWand=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{267, 426, 267, 354}, 
     new int[]{268, 426, 268, 354}, 
     new int[]{269, 426, 269, 354}, 
   };
 
   static int[][] chair=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{251, 528, 252, 448}, 
     new int[]{252, 448, 310, 448}, 
     new int[]{311, 448, 310, 525}, 
@@ -40,7 +55,7 @@ static class shed_room_objects {
   };
 
   static int[][] squashedChair=new int[][]{
-    new int[]{HIDDEN, 0, 0, 0}, 
+    new int[]{HIDDEN, LINE, 0, 0}, 
     new int[]{267, 498, 251, 528}, 
     new int[]{251, 528, 310, 526}, 
     new int[]{310, 526, 329, 497}, 
@@ -54,7 +69,7 @@ static class shed_room_objects {
   };
 
   static int[][] table=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{496, 516, 470, 615}, 
     new int[]{470, 615, 547, 615}, 
     new int[]{547, 615, 567, 516}, 
@@ -65,7 +80,7 @@ static class shed_room_objects {
   };
 
   static int[][] powder=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{504, 523, 504, 523}, 
     new int[]{519, 526, 519, 526}, 
     new int[]{519, 521, 519, 521}, 
@@ -95,7 +110,7 @@ static class shed_room_objects {
   };
 
   static int[][] paper=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{496, 538, 525, 537}, 
     new int[]{525, 537, 532, 515}, 
     new int[]{496, 538, 503, 515}, 
@@ -103,7 +118,7 @@ static class shed_room_objects {
   };
 
   static int[][] rug=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{51, 799, 218, 564}, 
     new int[]{218, 564, 421, 564}, 
     new int[]{421, 564, 295, 799}, 
@@ -154,20 +169,20 @@ static class shed_room_objects {
   };
 
   static int[][] face_smile=new int[][]{
-    new int[]{CONCEALED, 0, 0, 0}, 
+    new int[]{CONCEALED, LINE, 0, 0}, 
     new int[]{730, 355, 825, 355}, 
     new int[]{825, 355, 775, 390}, 
     new int[]{730, 355, 775, 390}, 
   };
 
   static int[][] door_open_lines=new int[][]{
-    new int[]{HIDDEN, 0, 0, 0}, 
+    new int[]{HIDDEN, LINE, 0, 0}, 
     new int[]{217, 563, 147, 394}, 
     new int[]{147, 394, 0, 549}, 
   };
 
   static int[][] exit_arrow=new int[][]{
-    new int[]{SHOWING, 0, 0, 0}, 
+    new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{662, 700, 662, 600}, 
     new int[]{662, 600, 722, 600}, 
     new int[]{722, 600, 722, 700}, 
@@ -178,7 +193,7 @@ static class shed_room_objects {
   };
 
   static int[][] dagger=new int[][]{
-    new int[]{CONCEALED, 0, 0, 0}, 
+    new int[]{CONCEALED, LINE, 0, 0}, 
     new int[]{692, 790, 681, 703}, 
     new int[]{681, 703, 690, 703}, 
     new int[]{690, 703, 690, 674}, 
@@ -191,19 +206,19 @@ static class shed_room_objects {
   static int[][][] room_lines=new int[][][]{roomEdges, magicWand, chair, squashedChair, table, powder, paper, rug, face_smile, door_open_lines, exit_arrow, dagger};
 
   static int[][] face_circles=new int[][]{
-    new int[]{CONCEALED, 0, 0, 0}, 
+    new int[]{CONCEALED, CIRCLE, 0, 0}, 
     new int[]{775, 333, 900, 332}, 
     new int[]{800, 310, 832, 310}, 
     new int[]{750, 310, 782, 310}, 
   };
 
   static int[][] door_closed=new int[][]{
-    new int[]{CONCEALED, 0, 0, 0}, 
+    new int[]{CONCEALED, CIRCLE, 0, 0}, 
     new int[]{343, 652, 358, 652}, 
   };
 
   static int[][] door_open_circles=new int[][]{
-    new int[]{HIDDEN, 0, 0, 0}, 
+    new int[]{HIDDEN, CIRCLE, 0, 0}, 
     new int[]{69, 503, 78, 515}, 
   };
 
