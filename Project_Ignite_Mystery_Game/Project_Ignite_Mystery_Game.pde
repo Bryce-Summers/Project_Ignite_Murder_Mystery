@@ -191,6 +191,14 @@ class Player {
   boolean getButler() {
     return this.butler;
   }
+  
+  void setChef(boolean b){
+    this.chef=b;
+  }
+  
+  boolean getChef(){
+    return this.chef;
+  }
 
   void setSigOther(boolean b) {
     this.sigOther=b;
