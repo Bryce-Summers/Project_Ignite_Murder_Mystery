@@ -2,10 +2,14 @@ import java.util.Arrays;
 
 class shed_room_main extends Room {
   //please put variables here
-  private int timer;
 
+  ////////////misc/////////////
+  private int timer;
   private int wandRange=100;
   private MusicPlayer musicPlayer=new MusicPlayer();
+
+  ///////////////////communication///////////////
+  private shed_room superRoom;
 
   /////////////////////progression of room status////////////////////////
   private boolean powderEaten=false;
@@ -15,41 +19,104 @@ class shed_room_main extends Room {
   private int faceClickCount=0;
   private boolean doorOpened=false;
 
+  ///////////////////dialogue stuff///////////////////////////////////////
+  private char speaker;
+  private int powderClicked=0;
+  private int chairClicked1=1;
+  private int chairClicked2=2;
+  private int wandClicked=3;
+  private int daggerClicked=4;
+  private int creepoClicked1=5;
+  private int creepoClicked2=6;
+  private int creepoClicked3=7;
+  private int creepoClicked4=8;
+  private int creepoClicked5=9;
+  private boolean dialogueBoxIsShowing=false;
+  GUI_Dialogue_Box dialogueBox=new GUI_Dialogue_Box(0, height-height/5, width, height/5);
+  private int playerDialogueIndex=0;
+  private int creepoDialogueIndex=0;
+  private String[] playerDialogue={"...no", "hey, look, a chair!", "ow", "that's weird.", "is that blood on this?", "!!!", "I-", "stop running!", "why would I kill you?", "I have some questions to ask first", "why was this knife here??", "*poke poke*", "*poke poke*", "*poke poke*", "Huh. I think he's telling the truth"};
+  private String[] creepoDialogue={"hi!", "whoa, careful with that", "nope nope nope nope", "ahhhh don't kill me", "...your not going to kill me?", "Stop waving my knife around then", "leave me alone", "give me my knife back", "ow!", "*grumble grumble*", "fine, I like shiny things, ok?"};
+
   void setup() {
     timer=0;
   }
 
-
+  ///////////////inter-room communication////////////////////
+  public void setSuperRoom(shed_room superRoom) {
+    this.superRoom=superRoom;
+  }
   ///////////////user interaction//////////////////////////////
   void mouseClicked() {
-    if (checkLineObjectClicked(shed_room_objects.paper)) {
-      powderEaten=true;
-      shed_room_objects.powder[0][0]=shed_room_objects.HIDDEN;
-    } else if (powderEaten&&checkLineObjectClicked(shed_room_objects.chair)&&shed_room_objects.chair[0][0]==shed_room_objects.SHOWING) {
-      chairSquashed=true;
-      shed_room_objects.chair[0][0]=shed_room_objects.HIDDEN;
-      shed_room_objects.squashedChair[0][0]=shed_room_objects.SHOWING;
-    } else if (chairSquashed&&checkLineObjectClicked(shed_room_objects.magicWand)) {
-      shed_room_objects.magicWand[0][0]=shed_room_objects.HIDDEN;
-      holdingWand=true;
-    } else if (holdingWand&&checkLineObjectClicked(shed_room_objects.dagger)) {
-      knifeFound=true;
-      shed_room_objects.dagger[0][0]=shed_room_objects.HIDDEN;
-    } else if (knifeFound&&checkCircleObjectClicked(shed_room_objects.face_circles)) {
-      int dist=(int)(Math.random()*wandRange+wandRange)*(Math.random()<.5?-1:1);
-      int dir=(int)(Math.random()*2);
-      translateObject(shed_room_objects.face_circles, dist, dir);
-      faceClickCount++;
-      if (faceClickCount>10) {
-        player.setCreepo(true);
-        print("hi!");
+    if (!dialogueBoxIsShowing) {
+      if (checkLineObjectClicked(shed_room_objects.paper)) {
+        playerDialogueIndex=powderClicked;
+        dialogueBoxIsShowing=true;
+        speaker='p';
+        //powderEaten=true;
+        //shed_room_objects.powder[0][0]=shed_room_objects.HIDDEN;
+      } else if (checkLineObjectClicked(shed_room_objects.chair)&&shed_room_objects.chair[0][0]==shed_room_objects.SHOWING) {
+        playerDialogueIndex=chairClicked1;
+        speaker='p';
+        dialogueBoxIsShowing=true;
+      } else if (chairSquashed&&checkLineObjectClicked(shed_room_objects.magicWand)) {
+        playerDialogueIndex=wandClicked;
+        dialogueBoxIsShowing=true;
+        speaker='p';
+        shed_room_objects.magicWand[0][0]=shed_room_objects.HIDDEN;
+        holdingWand=true;
+      } else if (holdingWand&&checkLineObjectClicked(shed_room_objects.dagger)) {
+        playerDialogueIndex=daggerClicked;
+        dialogueBoxIsShowing=true;
+        speaker='p';
+        knifeFound=true;
+        shed_room_objects.dagger[0][0]=shed_room_objects.HIDDEN;
+      } else if (checkCircleObjectClicked(shed_room_objects.face_circles)) {
+        dialogueBoxIsShowing=true;
+        speaker='c';
+        if (knifeFound) {
+          creepoDialogueIndex++;
+          if (creepoDialogueIndex>=creepoDialogue.length) {
+            dialogueBoxIsShowing=false;
+          }
+
+          int dist=(int)(Math.random()*wandRange+wandRange)*(Math.random()<.5?-1:1);
+          int dir=(int)(Math.random()*2);
+          translateObject(shed_room_objects.face_circles, dist, dir);
+          faceClickCount++;
+        }
+      } else if (!doorOpened&&holdingWand&&checkCircleObjectClicked(shed_room_objects.door_closed)) {
+        //fall into new room;
+        doorOpened=true;
+        shed_room_objects.door_closed[0][0]=shed_room_objects.HIDDEN;
+        shed_room_objects.door_open_circles[0][0]=shed_room_objects.SHOWING;
+        shed_room_objects.door_open_lines[0][0]=shed_room_objects.SHOWING;
+        superRoom.setCurrentSubRoom('t');
       }
-    } else if(holdingWand&&checkCircleObjectClicked(shed_room_objects.door_closed)){
-      //fall into new room;
-      doorOpened=true;
-      shed_room_objects.door_closed[0][0]=shed_room_objects.HIDDEN;
-      shed_room_objects.door_open_circles[0][0]=shed_room_objects.SHOWING;
-      shed_room_objects.door_open_lines[0][0]=shed_room_objects.SHOWING;
+    } else {
+      progressDialogueBox();
+    }
+  }
+
+  private void progressDialogueBox() {
+    if (speaker=='p') {
+      if (playerDialogueIndex==chairClicked1) {
+        chairSquashed=true;
+        shed_room_objects.chair[0][0]=shed_room_objects.HIDDEN;
+        shed_room_objects.squashedChair[0][0]=shed_room_objects.SHOWING;
+        playerDialogueIndex=chairClicked2;
+      }else {
+        dialogueBoxIsShowing=false;
+      }
+    } else if (speaker=='c') {
+      if (!knifeFound) {
+        playerDialogueIndex=creepoClicked1;
+      } else if (playerDialogueIndex<playerDialogue.length-1 ) {
+        playerDialogueIndex++;
+      } else {
+        player.setCreepo(true);
+      }
+      speaker='p';
     }
   }
 
@@ -72,14 +139,14 @@ class shed_room_main extends Room {
     }
   }
 
-  /////////////////////clicking////////////////////
+  /////////////////////clicking helper methods////////////////////
   private boolean checkLineObjectClicked(int[][] lineObject) {
     int[] bounds=getLineObjectBounds(lineObject);
     int minX=bounds[0];
     int minY=bounds[1];
     int maxX=bounds[2];
     int maxY=bounds[3];
-    int counter=0;
+    //int counter=0;
 
     //background(255);
     //drawLineObject(lineObject);
@@ -102,7 +169,7 @@ class shed_room_main extends Room {
     int minY=bounds[1];
     int maxX=bounds[2];
     int maxY=bounds[3];
-    int counter=0;
+    //int counter=0;
 
     //background(255);
     //drawCircleObject(circleObject);
@@ -176,6 +243,21 @@ class shed_room_main extends Room {
 
     drawConcealed();
     drawNormal();
+
+    if (dialogueBoxIsShowing) {
+      switch(speaker) {
+        case('p'):
+        dialogueBox.setTextColor(color(86, 126, 224));
+        dialogueBox.setText(playerDialogue[playerDialogueIndex]);
+        break;
+        case('c'):
+        dialogueBox.setTextColor(color(0, 255, 0));
+        dialogueBox.setText(creepoDialogue[creepoDialogueIndex]);
+        break;
+      }
+      dialogueBox.draw();
+      dialogueBox.setTextColor(color(86, 126, 224));
+    }
   }
 
   private void drawLineObject(int[][] lineObject) {

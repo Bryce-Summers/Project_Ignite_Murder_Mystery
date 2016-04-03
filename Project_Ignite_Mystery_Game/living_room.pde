@@ -1,12 +1,12 @@
 //this amazing room programmed by ____
 
 
-class living_room extends Room{
+class living_room extends Room {
   //please put variables here
-  
-  void setup(){
+
+  void setup() {
   }
-  
-  void draw(){
+
+  void draw() {
   }
 }

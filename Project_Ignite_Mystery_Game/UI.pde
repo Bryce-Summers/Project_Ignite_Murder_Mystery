@@ -8,6 +8,7 @@ class GUI_Dialogue_Box {
   int ylength;
   String text;
   color backgroundColor;
+  color textColor;
   //constructor
   GUI_Dialogue_Box(int x_in, int y_in, int xlength_in, int ylength_in) {
     x = x_in;
@@ -15,16 +16,21 @@ class GUI_Dialogue_Box {
     xlength = xlength_in;
     ylength = ylength_in;
     backgroundColor = 255;
+    textColor=color(86, 126, 224);
     text = "Dialogue Box";
   }
 
   void draw() {
     fill(255); //dialogue box color
     rect(x, y, xlength, ylength); 
-    fill(86, 126, 224);
+    fill(textColor);
     textAlign(CENTER, CENTER);
     textSize(25);
     text(text, x + xlength/2, y + ylength/2);
+  }
+  
+  public void setTextColor(color textColor){
+    this.textColor=textColor;
   }
 
   void setText(String text_in) {

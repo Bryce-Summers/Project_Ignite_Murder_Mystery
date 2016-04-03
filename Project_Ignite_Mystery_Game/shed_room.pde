@@ -5,9 +5,14 @@
 //last modified 14 February 2016
 
 class shed_room extends Room {
-  Room currentSubRoom=new shed_room_main();
+  shed_room_main mainRoom=new shed_room_main();
+  shed_room_trap trapRoom=new shed_room_trap();
+  Room currentSubRoom=mainRoom;
 
-  Room mainRoom=new shed_room_main();
+  {
+    mainRoom.setSuperRoom(this);
+    trapRoom.setSuperRoom(this);
+  }
   public shed_room() {
     currentSubRoom=mainRoom;
   }
@@ -23,7 +28,15 @@ class shed_room extends Room {
     currentSubRoom.mouseClicked();
   }
 
-  public void setCurrentSubRoom(Room subRoom) {
-    this.currentSubRoom=subRoom;
+  public void setCurrentSubRoom(char room) {
+    switch(room) {
+      case('t'):
+      this.currentSubRoom=trapRoom;
+      break;
+      
+      case('m'):
+      this.currentSubRoom=mainRoom;
+      break;
+    }
   }
 }

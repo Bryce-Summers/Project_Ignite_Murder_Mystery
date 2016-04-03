@@ -4,10 +4,10 @@ static class shed_room_objects {
   public static final int HIDDEN=0;
   public static final int SHOWING=1;
   public static final int CONCEALED=2;
-  
+
   public static final int LINE=0;
   public static final int CIRCLE=1;
- 
+
   //public class ImageObject{
   //  private int visibilityStatus;
   //  private int dataType;
@@ -18,7 +18,7 @@ static class shed_room_objects {
   //    copyOver(
   //  }
   //}
-  
+
   static int[][] roomEdges=new int[][]{
     new int[]{SHOWING, LINE, 0, 0}, 
     new int[]{2, 798, 232, 498}, 
