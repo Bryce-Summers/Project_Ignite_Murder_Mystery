@@ -34,9 +34,11 @@ static class shed_room_objects {
 
   static int[][] magicWand=new int[][]{
     new int[]{SHOWING, LINE, 0, 0}, 
+    new int[]{266, 426, 266, 354}, 
     new int[]{267, 426, 267, 354}, 
     new int[]{268, 426, 268, 354}, 
     new int[]{269, 426, 269, 354}, 
+    new int[]{270, 426, 270, 354}, 
   };
 
   static int[][] chair=new int[][]{

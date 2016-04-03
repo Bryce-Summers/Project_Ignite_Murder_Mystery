@@ -10,6 +10,8 @@ class shed_room extends Room {
   Room currentSubRoom=mainRoom;
 
   {
+    mainRoom.setup();
+    trapRoom.setup();
     mainRoom.setSuperRoom(this);
     trapRoom.setSuperRoom(this);
   }
@@ -24,8 +26,8 @@ class shed_room extends Room {
     currentSubRoom.draw();
   }
 
-  void mouseClicked() {
-    currentSubRoom.mouseClicked();
+  void mousePressed() {
+    currentSubRoom.mousePressed();
   }
 
   public void setCurrentSubRoom(char room) {

@@ -12,7 +12,7 @@
 Room entrance_room, living_room, kitchen_room, dining_room, study_room, shed_room, bed_room;
 
 //cutscene rooms
-Room intro_room, outro_room;
+Room intro_room, outro_room, start_menu_room;
 
 Player player;
 Room current_room;
@@ -21,6 +21,8 @@ void setup() {
 
   size(1200, 800);
 
+  start_menu_room=new start_menu_room();
+  start_menu_room.setup();
   entrance_room = new entrance_room();
   entrance_room.setup();
   living_room = new living_room();
@@ -42,7 +44,7 @@ void setup() {
   outro_room.setup();
 
   //current_room=intro_room;
-  current_room=shed_room;
+  current_room=start_menu_room;
 
   player = new Player();
 }
@@ -52,8 +54,8 @@ void draw() {
   //shed_room.draw();
 }
 
-void mouseClicked() {
-  shed_room.mouseClicked();
+void mousePressed() {
+  current_room.mousePressed();
 }
 /*murder weapon - knife - creepo
  advisor dialogue - “will” - advisor
@@ -210,7 +212,7 @@ class Player {
 abstract class Room {
   abstract void setup();
   abstract void draw();
-  void mouseClicked() {
+  void mousePressed() {
   }
 
   //@todo implement me, lovely UI programmers. Sincerely, me.
