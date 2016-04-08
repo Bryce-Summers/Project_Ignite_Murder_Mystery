@@ -22,7 +22,7 @@ class entrance_room extends Room {
   void setup() {
     background (0);
     //size (900, 600);
-    background = loadImage ("backgorund.png");
+    background = loadImage ("background.png");
     butler = loadImage ("butler.png");
     otherstuff = loadImage ("otherstuff.png");
     papers = loadImage ("papers.png");

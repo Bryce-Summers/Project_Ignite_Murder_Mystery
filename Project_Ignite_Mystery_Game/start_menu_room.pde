@@ -3,7 +3,7 @@ public class start_menu_room extends Room {
   Button playButton;
 
   public void setup() {
-    titleButton=new Button(100,150,1100,250,color(100,100,100),"THE MOST AWESOME MURDER (MYSTERY) EVER!");
+    titleButton=new Button(100, 150, 1100, 250, color(100, 100, 100), "THE MOST AWESOME MURDER (MYSTERY) EVER!");
     playButton=new Button(550, 350, 650, 450, color(100, 0, 0), "Play");
   }
 
@@ -14,7 +14,7 @@ public class start_menu_room extends Room {
 
   public void mousePressed() {
     if (playButton.isClicked()) {
-      goToRoom(entrance_room);
+      goToRoom(study_room);
     }
   }
 
@@ -54,7 +54,7 @@ public class start_menu_room extends Room {
       fill(colour);
       //stroke(255);
       textSize(DEFAULT_TEXT_SIZE);
-      textAlign(CENTER,CENTER);
+      textAlign(CENTER, CENTER);
       rect(left, top, wide, high);
       fill(255);
       text(string, left+wide/2, top+high/2);
