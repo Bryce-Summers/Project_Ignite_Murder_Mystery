@@ -34,7 +34,7 @@ class outro_room extends Room {
         suspectClicked="Who is the murderer?";
       }
     } else {
-      if (checkObjectClicked(confirmBundingBOx)) {
+      if (checkObjectClicked(confirmBoundingBox)) {
         goToRoom(intro_room);
       }
     }

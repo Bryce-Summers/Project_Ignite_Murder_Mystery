@@ -7,7 +7,7 @@
  * 
  */
 
-
+//still need: bedroom, diningroom, 
 //content rooms
 Room entrance_room, living_room, kitchen_room, dining_room, study_room, shed_room, bed_room;
 
@@ -191,12 +191,12 @@ class Player {
   boolean getButler() {
     return this.butler;
   }
-  
-  void setChef(boolean b){
+
+  void setChef(boolean b) {
     this.chef=b;
   }
-  
-  boolean getChef(){
+
+  boolean getChef() {
     return this.chef;
   }
 

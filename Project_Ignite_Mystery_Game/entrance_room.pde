@@ -1,6 +1,3 @@
-//this amazing room programmed by ____
-
-
 class entrance_room extends Room {
   PImage background;
   PImage butler;
@@ -21,8 +18,7 @@ class entrance_room extends Room {
   //itemhover thekey2;
   void setup() {
     background (0);
-    //size (900, 600);
-    background = loadImage ("background.png");
+    background = loadImage ("backgorund.png");
     butler = loadImage ("butler.png");
     otherstuff = loadImage ("otherstuff.png");
     papers = loadImage ("papers.png");
@@ -30,32 +26,134 @@ class entrance_room extends Room {
     closekey = loadImage ("keycloseup.png");
     arrow11 = loadImage ("arrow11.png");
     arrow22 =loadImage ("arrow22.png");
-    butler2 = new personclue (butler, 550, 120, (int)(butler.width/2.5), (int) (butler.height/2.5));
-    keys = new itemhover (papers, 60, 430, papers.width/7, papers.height/7); 
-    otherstuffs = new itemhover (otherstuff, 20, 430, otherstuff.width/6, otherstuff.height/6);
-    paper =new itemhoverclue (thekey, 85, 410, thekey.width/6, thekey.height/6);
-    arrow1 = new itemhover_arrow (arrow11, 790, 520, arrow11.width/3, arrow11.height/3);
-    arrow2 = new itemhover_arrow (arrow22, 50, 520, arrow22.width/3, arrow22.height/3);
+    butler2 = new personclue (butler, 750, 200, butler.width/2, butler.height/2);
+    keys = new itemhover (papers, 70, 570, papers.width/5, papers.height/5);  
+    otherstuffs = new itemhover (otherstuff, 9, 570, otherstuff.width/4, otherstuff.height/4);
+    paper =new itemhoverclue (thekey, 117, 550, thekey.width/4, thekey.height/4);
+    arrow1 = new itemhover_arrow (arrow11, 1100, 720, arrow11.width/2, arrow11.height/2);
+    arrow2 = new itemhover_arrow (arrow22, 50, 720, arrow22.width/2, arrow22.height/2);
   }
   void draw () {
-    image (background, 0, 0, 900, 600);
-    image (butler, 550, 120, butler.width/2.5, butler.height/2.5);
-    image (papers, 60, 430, papers.width/7, papers.height/7);  
-    image (otherstuff, 20, 430, otherstuff.width/6, otherstuff.height/6);
-    //image (thekey, 85, 410, thekey.width/6, thekey.height/6);
+    image (background, 0, 0, 1200, 800);
+    image (butler, 750, 200, butler.width/2, butler.height/2);
+    image (papers, 70, 570, papers.width/5, papers.height/5);  
+    image (otherstuff, 9, 570, otherstuff.width/4, otherstuff.height/4);
+    //image (thekey, 117, 550, thekey.width/4, thekey.height/4);
     //image (closekey, 200, 20, closekey.width, closekey.height);
     stroke(0);
     strokeWeight (4);
     fill (0, 80);
     rect (0, 0, 170, 70);
-    butler2.personclue1();
-    keys.itemchange();
+
+
     otherstuffs.itemchange();
     paper.itemchangeclue();
-    arrow1.itemhover();
+    butler2.personclue1();
     arrow2.itemhover();
-  }
 
+    arrow1.itemhover();
+    keys.itemchange();
+  }
+  class DialogueBox
+  {
+    int x;
+    int y;
+    int xlength;
+    int ylength;
+    String text;
+    color backgroundColor;
+    //constructor
+    DialogueBox(int x_in, int y_in, int xlength_in, int ylength_in)
+    {
+      x = x_in;
+      y = y_in;
+      xlength = xlength_in;
+      ylength = ylength_in;
+      backgroundColor = 255;
+      text = "You found a clue! Click on the clue in your inventory to investigate.";
+    }
+
+    void draw()
+    {
+      fill(0, 200); //dialogue box color
+      rect(x, y, xlength, ylength); 
+      fill(#55FFE1);
+      textAlign(CENTER, CENTER);
+      textSize(25);
+      text(text, x + xlength/2, y + ylength/2);
+    }
+
+    void setText(String text_in)
+    {
+      text = text_in;
+    }
+  }
+  class DialogueBox2
+  {
+    int x;
+    int y;
+    int xlength;
+    int ylength;
+    String text;
+    color backgroundColor;
+    //constructor
+    DialogueBox2(int x_in, int y_in, int xlength_in, int ylength_in)
+    {
+      x = x_in;
+      y = y_in;
+      xlength = xlength_in;
+      ylength = ylength_in;
+      backgroundColor = 255;
+      text = "Tragic incident. I feel most sorrow for his wife - but she is quite resilient.";
+    }
+    void draw2()
+    {
+      fill(0, 200); //dialogue box color
+      rect(x, y, xlength, ylength); 
+      fill(#55FFE1);
+      textAlign(CENTER, CENTER);
+      textSize(25);
+      text(text, x + xlength/2, y + ylength/2);
+    }
+
+    void setText(String text_in)
+    {
+      text = text_in;
+    }
+  }
+  class DialogueBox3
+  {
+    int x;
+    int y;
+    int xlength;
+    int ylength;
+    String text;
+    color backgroundColor;
+    //constructor
+    DialogueBox3(int x_in, int y_in, int xlength_in, int ylength_in)
+    {
+      x = x_in;
+      y = y_in;
+      xlength = xlength_in;
+      ylength = ylength_in;
+      backgroundColor = 255;
+      text = "I can't remember ever seeing that woman cry.";
+    }
+    void draw3()
+    {
+      fill(0, 200); //dialogue box color
+      rect(x, y, xlength, ylength); 
+      fill(#55FFE1);
+      textAlign(CENTER, CENTER);
+      textSize(25);
+      text(text, x + xlength/2, y + ylength/2);
+    }
+
+    void setText(String text_in)
+    {
+      text = text_in;
+    }
+  }
   class itemhoverclue {
     //constructor
     PImage img;  
@@ -69,7 +167,7 @@ class entrance_room extends Room {
     int y1 = rectY + itemHeight;
     int x1 = rectX + itemWidth;
     int timesinceclick = 0;
-    GUI_Dialogue_Box letterclue;
+    DialogueBox letterclue;
 
     itemhoverclue (PImage imgX_in, int rectX_in, int rectY_in, int itemWidth_in, int itemHeight_in)
     {
@@ -80,7 +178,7 @@ class entrance_room extends Room {
       itemHeight = itemHeight_in;
       y1 = rectY + itemHeight;
       x1 = rectX + itemWidth;
-      letterclue = new GUI_Dialogue_Box (0, 450, 900, 150);
+      letterclue = new DialogueBox (0, 600, 1200, 200);
       keyclose = loadImage ("keycloseup.png");
 
       clicked = false;
@@ -92,9 +190,9 @@ class entrance_room extends Room {
         timesinceclick = timesinceclick + 1;
         //fill (0);
         //ellipse (400, 400, 100, 100);
-        rectX = rectX - 3;
-        rectY = rectY - 20;
-        if (timesinceclick<60) {
+        rectX = rectX - 10;
+        rectY = rectY - 50;
+        if (timesinceclick<50) {
           letterclue.draw();
         }
       }
@@ -123,15 +221,14 @@ class entrance_room extends Room {
 
               fill (0, 100);
 
-              rect (0, 0, 900, 600);
-              image (closekey, 320, 70, closekey.width*2, closekey.height*2);
+              rect (0, 0, 1200, 800);
+              image (closekey, 320, 70, closekey.width*2.3, closekey.height*2.3);
             }
           }
         }
       }
     }
   }
-
   class itemhover {
     //constructor
     PImage img;  
@@ -183,7 +280,6 @@ class entrance_room extends Room {
       }
     }
   }
-
   class personclue {
     //constructor
     PImage img;  
@@ -208,8 +304,8 @@ class entrance_room extends Room {
       itemHeight = itemHeight_in;
       y1 = rectY + itemHeight;
       x1 = rectX + itemWidth;
-      dialogueclue = new DialogueBox2 (0, 450, 900, 150);
-      dialogueclue2 = new DialogueBox3 (0, 450, 900, 150);
+      dialogueclue = new DialogueBox2 (0, 600, 1200, 200);
+      dialogueclue2 = new DialogueBox3 (0, 600, 1200, 200);
       clicked = false;
       clicked2 = false;
     }
@@ -254,7 +350,6 @@ class entrance_room extends Room {
       }
     }
   }
-
   class itemhover_arrow {
     //constructor
     PImage img;  

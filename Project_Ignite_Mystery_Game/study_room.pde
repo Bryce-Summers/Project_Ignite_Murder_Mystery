@@ -1,6 +1,12 @@
 public class study_room extends Room {
   PImage bookshelf2;
   GUI_Dialogue_Box textbox;
+  GUI_Dialogue_Box toLivingRoom;
+  int[] toLivingRoomBounds=new int[]{width-300, 0, width, 100};
+  int[] toBedRoomBounds=new int[]{width-300, 100, width, 200};
+  int[] toKitchenRoomBounds=new int[]{width-300, 200, width, 300};
+  GUI_Dialogue_Box toBedRoom;
+  GUI_Dialogue_Box toKitchenRoom;
   void setup()
   {
     background(32, 175, 145);
@@ -8,6 +14,12 @@ public class study_room extends Room {
     bookshelf2 = loadImage("bookshelf2.jpeg");
     textbox = new GUI_Dialogue_Box (0, 500, 600, 100);
     textbox.setText("Welcome to the Study. I was his Financial Advisor. \n I handled his immense fortune and made any changes to his will. \n He and I were good friends and I cannot imagine anyone who would do this.");
+    toLivingRoom=new GUI_Dialogue_Box(width-300, 0, 300, 100);
+    toLivingRoom.setText("Go to living room");
+    toBedRoom=new GUI_Dialogue_Box(width-300, 100, 300, 100);
+    toBedRoom.setText("Go to bed room");
+    toKitchenRoom=new GUI_Dialogue_Box (width-300, 200, 300, 100);
+    toKitchenRoom.setText("Go to kitchen");
   }
 
   void draw ()
@@ -17,6 +29,9 @@ public class study_room extends Room {
     drawtable(); 
     drawclock();
     drawdoor();
+    toLivingRoom.draw();
+    toBedRoom.draw();
+    toKitchenRoom.draw();
 
     //BOOKSHELF BORDER
     if (mouseX > 325 && mouseX < 475)
@@ -129,5 +144,22 @@ public class study_room extends Room {
         textbox.setText("On the desk you see scratch marks and some faint drops of blood. \n It seems there has been a fight in this room.");
       }
     }
+
+    if (checkObjectClicked(toLivingRoomBounds)) {
+      goToRoom(living_room);
+    } else if (checkObjectClicked(toBedRoomBounds)) {
+      goToRoom(bed_room);
+    } else if (checkObjectClicked(toKitchenRoomBounds)) {
+      goToRoom(kitchen_room);
+    }
   }
+}  
+
+private boolean checkObjectClicked(int[]bounds) {
+  int minX=bounds[0];
+  int minY=bounds[1];
+  int maxX=bounds[2];
+  int maxY=bounds[3];
+
+  return mouseX>minX&&mouseX<maxX&&mouseY>minY&&mouseY<maxY;
 }

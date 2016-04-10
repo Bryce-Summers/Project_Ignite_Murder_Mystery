@@ -6,13 +6,33 @@ class living_room extends Room {
   int x;
   int y;
 
+  GUI_Dialogue_Box toDiningRoom;
+  GUI_Dialogue_Box toEntranceRoom;
+  GUI_Dialogue_Box toStudyRoom;
+  int[] toDiningRoomBounds=new int[]{0, height-100, 300, height};
+  int[] toEntranceRoomBounds=new int[]{300, height-100, 600, height};
+  int[] toStudyRoomBounds=new int[]{600, height-100, 900, height};
   void setup() {
     background(0, 0, 0);
     stroke(50);
     frameRate(150);
+
+    toDiningRoom=new GUI_Dialogue_Box(0, height-100, 300, 100);
+    toDiningRoom.setText("Go to the dining room");
+    toEntranceRoom=new GUI_Dialogue_Box(300,height-100, 300, 100);
+    toEntranceRoom.setText("Go to the entrance hall");
+    toStudyRoom=new GUI_Dialogue_Box (600, height-100, 300, 100);
+    toStudyRoom.setText("Go to the study");
   }
-  
-  void mousePressed(){
+
+  void mousePressed() {
+    if(checkObjectClicked(toDiningRoomBounds)){
+      goToRoom(dining_room);
+    } else if(checkObjectClicked(toEntranceRoomBounds)){
+      goToRoom(entrance_room);
+    } else if(checkObjectClicked(toStudyRoomBounds)){
+      goToRoom(study_room);
+    }
   }
 
   void draw() {
@@ -95,5 +115,9 @@ class living_room extends Room {
     ellipse(825, 320, 10, 10); //Eye 1
     ellipse(855, 320, 10, 10); //Eye 2
     ellipse(840, 330, 1, 1);
+    
+    toDiningRoom.draw();
+    toEntranceRoom.draw();
+    toStudyRoom.draw();
   }
 }
