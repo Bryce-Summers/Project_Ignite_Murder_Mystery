@@ -356,14 +356,14 @@ class bed_room extends Room {
           if (mousePressed == true) {
             goToRoom(study_room);
           }
-          if (img == img9) {
-            if (mousePressed == true) {
-              goToRoom(entrance_room);
-            }
-            if (mouseY>rectY + itemHeight) {
+        }
+        if (img == img9) {
+          if (mousePressed == true) {
+            goToRoom(entrance_room);
+          }
+          if (mouseY>rectY + itemHeight) {
 
-              image (img, rectX, rectY, itemWidth, itemHeight);
-            }
+            image (img, rectX, rectY, itemWidth, itemHeight);
           }
         }
       }

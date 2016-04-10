@@ -65,7 +65,7 @@ class shed_room_main extends Room {
         speaker='p';
         shed_room_objects.magicWand[0][0]=shed_room_objects.HIDDEN;
         holdingWand=true;
-      } else if (holdingWand&&checkLineObjectClicked(shed_room_objects.dagger)) {
+      } else if (holdingWand&&checkLineObjectClicked(shed_room_objects.dagger)&&!knifeFound) {
         playerDialogueIndex=daggerClicked;
         dialogueBoxIsShowing=true;
         speaker='p';

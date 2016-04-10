@@ -35,7 +35,7 @@ class outro_room extends Room {
       }
     } else {
       if (checkObjectClicked(confirmBoundingBox)) {
-        goToRoom(intro_room);
+        goToRoom(start_menu_room);
       }
     }
   }
