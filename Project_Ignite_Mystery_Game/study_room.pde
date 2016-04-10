@@ -1,13 +1,12 @@
 public class study_room extends Room {
   PImage bookshelf2;
-  DialogueBox textbox;
+  GUI_Dialogue_Box textbox;
   void setup()
   {
     background(32, 175, 145);
     stroke(100);
-    //commented out
-    //bookshelf2 = loadImage("bookshelf2.jpeg");
-    textbox = new DialogueBox (0, 500, 600, 100);
+    bookshelf2 = loadImage("bookshelf2.jpeg");
+    textbox = new GUI_Dialogue_Box (0, 500, 600, 100);
     textbox.setText("Welcome to the Study. I was his Financial Advisor. \n I handled his immense fortune and made any changes to his will. \n He and I were good friends and I cannot imagine anyone who would do this.");
   }
 
@@ -79,7 +78,7 @@ public class study_room extends Room {
     quad(125, 125, 0, 0, 600, 0, 475, 125);
     fill(55, 203, 173);
 
-   // image(bookshelf2, 325, 175, 150, 300);
+    image(bookshelf2, 325, 175, 150, 300);
   }
 
   void drawtable()

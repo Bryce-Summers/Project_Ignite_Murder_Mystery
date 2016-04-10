@@ -14,7 +14,7 @@ public class start_menu_room extends Room {
 
   public void mousePressed() {
     if (playButton.isClicked()) {
-      goToRoom(study_room);
+      goToRoom(outro_room);
     }
   }
 

@@ -23,7 +23,7 @@ class GUI_Dialogue_Box {
   }
 
   void draw() {
-    fill(255); //dialogue box color
+    fill(backgroundColor); //dialogue box color
     rect(x, y, xlength, ylength); 
     fill(textColor);
     textAlign(CENTER, CENTER);
@@ -37,6 +37,10 @@ class GUI_Dialogue_Box {
   
   public void setTextSize(int textSize){
     this.textSize=textSize;
+  }
+  
+  public void setBackgroundColor(color backgroundColor){
+    this.backgroundColor=backgroundColor;
   }
 
   void setText(String text_in) {

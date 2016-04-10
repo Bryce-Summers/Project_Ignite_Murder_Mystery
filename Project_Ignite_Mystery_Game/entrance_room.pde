@@ -69,7 +69,7 @@ class entrance_room extends Room {
     int y1 = rectY + itemHeight;
     int x1 = rectX + itemWidth;
     int timesinceclick = 0;
-    DialogueBox letterclue;
+    GUI_Dialogue_Box letterclue;
 
     itemhoverclue (PImage imgX_in, int rectX_in, int rectY_in, int itemWidth_in, int itemHeight_in)
     {
@@ -80,7 +80,7 @@ class entrance_room extends Room {
       itemHeight = itemHeight_in;
       y1 = rectY + itemHeight;
       x1 = rectX + itemWidth;
-      letterclue = new DialogueBox (0, 450, 900, 150);
+      letterclue = new GUI_Dialogue_Box (0, 450, 900, 150);
       keyclose = loadImage ("keycloseup.png");
 
       clicked = false;

@@ -152,19 +152,6 @@ class shed_room_main extends Room {
     int minY=bounds[1];
     int maxX=bounds[2];
     int maxY=bounds[3];
-    //int counter=0;
-
-    //background(255);
-    //drawLineObject(lineObject);
-    //loadPixels();
-    //for (int x=minX; x<mouseX; x++) {
-    //  int index=mouseY*width+x;
-    //  if (pixels[index]==color(0)) {
-    //    counter++;
-    //  }
-    //}
-    //draw();
-    //return counter%2==1;
 
     return mouseX>minX&&mouseX<maxX&&mouseY>minY&&mouseY<maxY;
   }
@@ -175,19 +162,6 @@ class shed_room_main extends Room {
     int minY=bounds[1];
     int maxX=bounds[2];
     int maxY=bounds[3];
-    //int counter=0;
-
-    //background(255);
-    //drawCircleObject(circleObject);
-    //loadPixels();
-    //for (int x=minX; x<mouseX; x++) {
-    //  int index=mouseY*width+x;
-    //  if (pixels[index]!=color(255)) {
-    //    counter++;
-    //  }
-    //}
-    //draw();
-    //return counter%2==1;
 
     return mouseX>minX&&mouseX<maxX&&mouseY>minY&&mouseY<maxY;
   }
