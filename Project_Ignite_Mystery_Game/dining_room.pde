@@ -144,7 +144,7 @@ class dining_room extends Room {
       vertex(150, 250, hole.width, hole.height);
       endShape();
 
-      dialogue.setText("You have discovered the \n secret tunnel to the shed");
+      dialogue.setText("You have discovered the \n secret tunnel to the bedroom");
     };
     /*this rectangel will be used as the buton to send the player to the secret area*/
 

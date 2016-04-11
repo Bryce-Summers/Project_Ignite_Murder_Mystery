@@ -22,7 +22,7 @@ int[] winBoundingBox;
 
 void setup() {
 
-  size(1200, 800);
+  size(1200, 800, P2D);
 
   start_menu_room=new start_menu_room();
   start_menu_room.setup();
