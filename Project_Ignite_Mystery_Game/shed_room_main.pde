@@ -219,11 +219,14 @@ class shed_room_main extends Room {
     noFill();
     timer++;
 
-    background(255);
+    background(50);
     stroke(0);
 
     drawConcealed();
     drawNormal();
+    textSize(32);
+    fill(0);
+    text("If lost, click random things.",400,0,400,100);
 
     if (dialogueBoxIsShowing) {
       if (playerDialogueIndex==secretDoorClicked) {
@@ -273,6 +276,7 @@ class shed_room_main extends Room {
 
   private void drawConcealed() {
     if (holdingWand) {
+      background(255);
       drawConcealedLines();
       drawConcealedCircles();
       loadPixels();
@@ -280,7 +284,7 @@ class shed_room_main extends Room {
         for (int y=0; y<height; y++) {
           if (getDistance(x, y, mouseX, mouseY)>wandRange) {
             int index=x+y*width;
-            pixels[index]=color(255);
+            pixels[index]=color(50);
           }
         }
       }
@@ -334,5 +338,9 @@ class shed_room_main extends Room {
           input[i][j];
       }
     }
+  }
+  
+  public void stopMusic(){
+    this.musicPlayer.stop();
   }
 }

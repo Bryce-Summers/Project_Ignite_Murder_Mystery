@@ -19,7 +19,7 @@ class intro_room extends Room {
   }
   
   void mousePressed(){
-    goToRoom(living_room);
+    goToRoom(instruction_room);
   }
 
   void draw() {
@@ -49,5 +49,6 @@ class intro_room extends Room {
     {
       t++;
     }
+    text ("Click anywhere", 400, 700, 400, 90);
   }
 }

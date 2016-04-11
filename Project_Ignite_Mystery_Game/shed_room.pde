@@ -15,6 +15,7 @@ class shed_room extends Room {
     mainRoom.setSuperRoom(this);
     trapRoom.setSuperRoom(this);
   }
+  
   public shed_room() {
     currentSubRoom=mainRoom;
   }
@@ -35,10 +36,14 @@ class shed_room extends Room {
       case('t'):
       this.currentSubRoom=trapRoom;
       break;
-      
+
       case('m'):
       this.currentSubRoom=mainRoom;
       break;
     }
+  }
+  
+  public void stopMusic(){
+    this.mainRoom.stopMusic();
   }
 }

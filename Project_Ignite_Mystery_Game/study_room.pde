@@ -2,9 +2,9 @@ public class study_room extends Room {
   PImage bookshelf2;
   GUI_Dialogue_Box textbox;
   GUI_Dialogue_Box toLivingRoom;
-  int[] toLivingRoomBounds=new int[]{width-300, 0, width, 100};
-  int[] toBedRoomBounds=new int[]{width-300, 100, width, 200};
-  int[] toKitchenRoomBounds=new int[]{width-300, 200, width, 300};
+  int[] toLivingRoomBounds=new int[]{50, 0, 350, 50};
+  int[] toBedRoomBounds=new int[]{350, 0, 650, 50};
+  int[] toKitchenRoomBounds=new int[]{650, 0, 950, 50};
   GUI_Dialogue_Box toBedRoom;
   GUI_Dialogue_Box toKitchenRoom;
   void setup()
@@ -12,13 +12,13 @@ public class study_room extends Room {
     background(32, 175, 145);
     stroke(100);
     bookshelf2 = loadImage("bookshelf2.jpeg");
-    textbox = new GUI_Dialogue_Box (0, 500, 600, 100);
+    textbox = new GUI_Dialogue_Box (0, 600, 1200, 200);
     textbox.setText("Welcome to the Study. I was his Financial Advisor. \n I handled his immense fortune and made any changes to his will. \n He and I were good friends and I cannot imagine anyone who would do this.");
-    toLivingRoom=new GUI_Dialogue_Box(width-300, 0, 300, 100);
+    toLivingRoom=new GUI_Dialogue_Box(50, 0, 300, 50);
     toLivingRoom.setText("Go to living room");
-    toBedRoom=new GUI_Dialogue_Box(width-300, 100, 300, 100);
+    toBedRoom=new GUI_Dialogue_Box(350, 0, 300, 50);
     toBedRoom.setText("Go to bed room");
-    toKitchenRoom=new GUI_Dialogue_Box (width-300, 200, 300, 100);
+    toKitchenRoom=new GUI_Dialogue_Box (650, 0, 300, 50);
     toKitchenRoom.setText("Go to kitchen");
   }
 
@@ -78,22 +78,49 @@ public class study_room extends Room {
     }
 
     textbox.draw();
+
+    drawAdvisor();
+  }
+
+  private void drawAdvisor() {
+    PGraphics pg=createGraphics(width, height);
+
+    pg.beginDraw();
+    pg.fill(237, 183, 124);
+    pg.ellipse(600, 200, 60, 60);
+    pg.line(600, 230, 600, 360);
+    pg.line(600, 260, 620, 310);
+    pg.line(600, 260, 580, 310);
+    pg.line(600, 360, 620, 400);
+    pg.line(600, 360, 580, 400);
+
+    pg.ellipse(590, 200, 20, 20);
+    pg.ellipse(610, 200, 20, 20);
+    pg.line(580, 200, 570, 190);
+    pg.line(620, 200, 630, 190);
+
+    pg.line(600, 220, 620, 215);
+    pg.endDraw();
+    
+    image(pg, 0, 200, width, height);
   }
 
   void drawroom ()
   {
 
     line(125, 475, 0, 600); // bottom left line
-    line(475, 475, 600, 600); //bottom right line
+    line(1075, 475, 1200, 600); //bottom right line
     line(100, 100, 0, 0); //top left line
-    line(500, 100, 600, 0); //top right line
+    line(1100, 100, 1200, 0); //top right line
 
     fill(12, 144, 117); 
-    quad(125, 125, 475, 125, 475, 475, 125, 475);
-    quad(125, 125, 0, 0, 600, 0, 475, 125);
+    quad(125, 125, 1075, 125, 1075, 475, 125, 475);
+    quad(125, 125, 0, 0, 1200, 0, 1075, 125);
     fill(55, 203, 173);
 
     image(bookshelf2, 325, 175, 150, 300);
+    image(bookshelf2, 475, 175, 150, 300);
+    image(bookshelf2, 625, 175, 150, 300);
   }
 
   void drawtable()
@@ -116,9 +143,11 @@ public class study_room extends Room {
   void drawdoor()
   {
     fill(98, 31, 9);
-    quad(500, 200, 550, 160, 550, 550, 500, 500);
+    //quad(500, 200, 550, 160, 550, 550, 500, 500);
+    quad(1100, 200, 1150, 160, 1150, 550, 1100, 500);
     fill(219, 154, 55);
-    ellipse(510, 340, 10, 5);
+    //ellipse(510, 340, 10, 5);
+    ellipse(1110, 340, 10, 5);
   }
 
   void mousePressed()

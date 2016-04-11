@@ -3,11 +3,12 @@ public class start_menu_room extends Room {
   Button playButton;
 
   public void setup() {
-    titleButton=new Button(100, 150, 1100, 250, color(100, 100, 100), "THE MOST AWESOME MURDER (MYSTERY) EVER!");
+    titleButton=new Button(100, 150, 1100, 250, color(100, 100, 100), "FYI: The murderer did it");
     playButton=new Button(550, 350, 650, 450, color(100, 0, 0), "Play");
   }
 
   public void draw() {
+    background(0);
     titleButton.draw();
     playButton.draw();
   }

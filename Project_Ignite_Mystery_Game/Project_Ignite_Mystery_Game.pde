@@ -7,15 +7,18 @@
  * 
  */
 
-//still need: bedroom, diningroom, 
+//still need:diningroom, 
 //content rooms
 Room entrance_room, living_room, kitchen_room, dining_room, study_room, shed_room, bed_room;
 
 //cutscene rooms
-Room intro_room, outro_room, start_menu_room;
+Room intro_room, outro_room, start_menu_room, instruction_room;
 
 Player player;
 Room current_room;
+
+GUI_Dialogue_Box win;
+int[] winBoundingBox;
 
 void setup() {
 
@@ -42,20 +45,42 @@ void setup() {
   intro_room.setup();
   outro_room=new outro_room();
   outro_room.setup();
+  instruction_room=new instruction_room();
+  instruction_room.setup();
 
   //current_room=intro_room;
   current_room=start_menu_room;
 
   player = new Player();
+
+  win=new GUI_Dialogue_Box(1050, 0, 150, 100);
+  win.setText("J'accuse!");
+  winBoundingBox=new int[]{1050, 0, 1200, 100};
 }
 
 void draw() {
   current_room.draw();
+  //println(current_room.getClass());
+  if (!(current_room.getClass().equals(start_menu_room.getClass())
+    ||current_room.getClass().equals(intro_room.getClass())
+    ||current_room.getClass().equals(instruction_room.getClass())
+    ||current_room.getClass().equals(outro_room.getClass()))) {
+    win.draw();
+  }
   //shed_room.draw();
 }
 
 void mousePressed() {
   current_room.mousePressed();
+  if (!(current_room.getClass().equals(start_menu_room.getClass())
+    ||current_room.getClass().equals(intro_room.getClass())
+    ||current_room.getClass().equals(instruction_room.getClass())
+    ||current_room.getClass().equals(outro_room.getClass()))) {
+
+    if (checkObjectClicked(winBoundingBox)) {
+      current_room.goToRoom(outro_room);
+    }
+  }
 }
 /*murder weapon - knife - creepo
  advisor dialogue - “will” - advisor
@@ -215,17 +240,14 @@ abstract class Room {
   void mousePressed() {
   }
 
-  //@todo implement me, lovely UI programmers. Sincerely, me.
-  void displayDialogue() {
-  }
-
-
   void goToRoom(Room room) {
+    strokeWeight(1);
     current_room=room;
   }
 }
 
 void reset() {
+  ((shed_room)shed_room).stopMusic();
   setup();
 }
 

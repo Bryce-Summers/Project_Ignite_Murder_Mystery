@@ -94,10 +94,10 @@ public  class outro_room_objects {
   /////////////////////////butler///////////////////
   public String butlerImagePath="butler.png";
   PImage butler=loadImage (butlerImagePath);
-  public int[] butlerBoundingBox=new int[]{120,130,465,585};
+  public int[] butlerBoundingBox=new int[]{120+735, 130+115, 465+735, 585+115};
 
   public void drawButler() {
-    image (butler, 100, 100, butler.width/2.5, butler.height/2.5);
+    image (butler, 100+735, 100+215, butler.width/2.5, butler.height/2.5);
   }
 
 
@@ -150,19 +150,59 @@ public  class outro_room_objects {
   public void drawMaid() {
     //rect(580,100,110,300);
     pg.beginDraw();
-    //background(0);
+    pg.fill(93, 37, 9);
+    pg.ellipse(840, 320, 60, 60);
+    pg.fill(255, 255, 255);
     pg.ellipse(840, 330, 60, 60);//Maid Head
     pg.line(840, 360, 885, 480);//Left Arm
     pg.line(840, 360, 785, 480);//Right Arm
     pg.line(820, 480, 820, 600);//Left Leg
     pg.line(850, 480, 850, 600);//Right Leg
-    pg.fill(255, 255, 255);
+    pg.fill(0, 0, 0);
     pg.triangle(840, 360, 805, 480, 875, 480);//Maid Body
-    pg.fill(255, 255, 255);
+    pg.fill(0, 0, 0);
     pg.ellipse(825, 320, 10, 10); //Eye 1
     pg.ellipse(855, 320, 10, 10); //Eye 2
-    pg.ellipse(840, 330, 1, 1);
+    pg.ellipse(840, 330, 1, 1);//Nose
+    pg.line(824, 315, 820, 310);
+    pg.line(825, 315, 825, 310);
+    pg.line(855, 315, 851, 310);
+    pg.line(855, 315, 855, 310);//Lashes
+    pg.line(835, 343, 842, 343);//Mouth
     pg.endDraw();
     image(pg, -200, -200);
+  }
+
+  ////////////////////////////wife/////////////////////////////////////
+  String wifeImagePath="sigother.png";
+  PImage wife=loadImage(wifeImagePath);
+  int[] wifeBoundingBox=new int[]{100, 300, 100+(int)(wife.width/2.5), 300+(int)(wife.height/2.5)};
+  public void drawWife() {
+    image(wife, 100, 300, (int) (wife.width/2.5), (int)(wife.height/2.5));
+  }
+
+  /////////////advisor/////////////////////
+  public int[] advisorBoundingBox=new int[]{570-300,140-100,630-300,400-100};
+  public void drawAdvisor() {
+    PGraphics pg=createGraphics(width, height);
+
+    pg.beginDraw();
+    pg.fill(237, 183, 124);
+    pg.ellipse(600, 200, 60, 60);
+    pg.line(600, 230, 600, 360);
+    pg.line(600, 260, 620, 310);
+    pg.line(600, 260, 580, 310);
+    pg.line(600, 360, 620, 400);
+    pg.line(600, 360, 580, 400);
+
+    pg.ellipse(590, 200, 20, 20);
+    pg.ellipse(610, 200, 20, 20);
+    pg.line(580, 200, 570, 190);
+    pg.line(620, 200, 630, 190);
+
+    pg.line(600, 220, 620, 215);
+    pg.endDraw();
+
+    image(pg, -300, -100, width, height);
   }
 }

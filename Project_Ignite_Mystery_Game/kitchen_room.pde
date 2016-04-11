@@ -12,9 +12,9 @@ class kitchen_room extends Room {
   String Dialogue = "WHO'S THERE?!";
   String []ChefDialogue = {"WHO'S THERE?!", "Oh it's just you", "What do you want?", "I'm Busy", "Ze Murder?", "You think I \n killed Him?", "HA!", "What would give \n you that idea?", "My anger issues?", "I DO NOT HAVE \n ANGER ISSUES", "...", "Look. All I know is \n He was greedy", "How much I get \n payed?", "Penny a day", "Trust me.", "If it was up to me.", "I would have \n killed him", "...", "That makes me sound \n really guilty", "But I didn't do it.", "What?", "The blood on \n my shirt?", "That's just meat from \n Meal I made", "You think it's his?", "Look take a sample", "I don't care", "Leave me alone"};
   int ChefDialogueIndex= 0;
-  boolean pressbluebutton = false;
-  boolean pressredbutton = false;
-  boolean pressgreenbutton = false;
+  boolean pressbluebutton = true;
+  boolean pressredbutton = true;
+  boolean pressgreenbutton = true;
   int blueColor;
   int redColor;
   int greenColor;
@@ -141,22 +141,22 @@ class kitchen_room extends Room {
     {
       if ( get(mouseX, mouseY) == blueColor) {
         pressbluebutton = ! pressbluebutton;
-        if( pressbluebutton == false )
-        goToRoom(study_room);//ROOM CHANGE
+        if ( pressbluebutton == false )
+          goToRoom(study_room);//ROOM CHANGE
       }
 
       if ( get(mouseX, mouseY) == redColor) {
         pressredbutton = ! pressredbutton;
-        if( pressredbutton == false )
-        goToRoom(shed_room);//ROOM CHANGE
+        if ( pressredbutton == false )
+          goToRoom(shed_room);//ROOM CHANGE
       }
 
 
 
       if ( get(mouseX, mouseY) == greenColor) {
         pressgreenbutton = ! pressgreenbutton;
-        if( pressgreenbutton == false )
-        goToRoom(dining_room);//ROOM CHANGE
+        if ( pressgreenbutton == false )
+          goToRoom(dining_room);//ROOM CHANGE
       }
     }
   }
